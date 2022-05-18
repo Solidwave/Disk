@@ -83,7 +83,11 @@ public class Sling : MonoBehaviour
 
                 disk.GetComponent<Rigidbody>().velocity = (anchor.transform.position - disk.transform.position) * 15;
 
+                  disk.GetComponent<Collider>().enabled = true;
+
                 Global.moving = true;
+
+              
 
             }
         }

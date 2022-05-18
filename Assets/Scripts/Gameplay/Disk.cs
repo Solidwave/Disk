@@ -27,8 +27,6 @@ public class Disk : MonoBehaviour
     public void destroyMe()
     {   
         
-        Instantiate(diskPrefab, anchor.transform.position, Quaternion.identity);
-
         Destroy(gameObject);
 
         Global.moving = false;
@@ -49,20 +47,13 @@ public class Disk : MonoBehaviour
         switch (other.tag)
         {
             case "enemy":
-                gameObject.GetComponent<Collider>().enabled = false;
-                gameObject.GetComponent<Animator>().SetTrigger("Destroy");
-                
-                gameObject.GetComponent<Rigidbody>().velocity = gameObject.GetComponent<Rigidbody>().velocity * 0.3f;
+                Instantiate(diskPrefab, anchor.transform.position, Quaternion.identity);
 
-                
+                gameObject.GetComponent<Collider>().enabled = false;
+
+                gameObject.GetComponent<Animator>().SetTrigger("Destroy");
 
                 other.GetComponent<Enemy>().health -= damage;
-
-                
-
-               
-
-               
 
                 break;
         }

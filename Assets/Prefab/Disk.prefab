@@ -151,11 +151,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2114170096309751315}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c76354f7e1f80b49a2919b9c1e4df7e, type: 3}
+  m_Script: {fileID: 11500000, guid: c597f9df82b1fe647a344c49e339fdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   diskPrefab: {fileID: 2114170096309751315}
-  disk: {fileID: 2114170096309751315}
   damage: 1
 --- !u!95 &-2014252815754851731
 Animator:

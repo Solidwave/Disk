@@ -77,7 +77,7 @@ public class Spawn : MonoBehaviour
 
             if (currentLevel.uncommon > 0)
             {
-                 Instantiate(uncommonEnemy,position, Quaternion.identity);
+                Instantiate(uncommonEnemy,position, Quaternion.identity);
 
                 currentLevel.uncommon--;
 

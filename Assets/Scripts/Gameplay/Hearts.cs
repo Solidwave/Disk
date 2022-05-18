@@ -12,7 +12,6 @@ public class Hearts : MonoBehaviour
 
     int startHealth;
     
-    
     void Start()
     {
         startHealth = Global.playerHealth;
@@ -32,9 +31,10 @@ public class Hearts : MonoBehaviour
         if (Global.playerHealth <= hearts.Count -1)
         {
              hearts[Global.playerHealth].enabled = false;
+             
         }
       
-
+    
       
     }
 

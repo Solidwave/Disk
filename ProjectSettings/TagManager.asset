@@ -14,6 +14,7 @@ TagManager:
   - health
   - gameover
   - done
+  - to_destroy
   layers:
   - Default
   - TransparentFX

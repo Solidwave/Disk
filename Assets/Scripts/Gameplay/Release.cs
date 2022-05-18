@@ -58,9 +58,4 @@ public class Release : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
-    
-
-
-
 }
