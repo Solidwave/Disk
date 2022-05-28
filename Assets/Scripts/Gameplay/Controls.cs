@@ -22,6 +22,8 @@ public class Controls : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
+        PlayerPrefs.SetInt("level", PlayerPrefs.GetInt("level") - 1);
+
         Global.playerHealth = 5;
 
         Global.moving = false;
@@ -30,8 +32,17 @@ public class Controls : MonoBehaviour
     }
 
     public void goToMenu () {
-        SceneManager.UnloadSceneAsync("Gameplay");
 
         SceneManager.LoadScene("Menu");
+    }
+
+    public void nextLevel () {
+        SceneManager.LoadScene("Gameplay");
+
+        Global.playerHealth = 5;
+
+        Global.moving = false;
+
+        Time.timeScale = 1;
     }
 }

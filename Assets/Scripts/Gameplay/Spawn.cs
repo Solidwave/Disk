@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class Spawn : MonoBehaviour
 {
@@ -18,11 +21,15 @@ public class Spawn : MonoBehaviour
 
     public Vector3 initialPosition;
 
-    private int currentLevelId = 1;
+    private int currentLevelId;
 
     private bool spawning = true;
 
     private Level currentLevel;
+
+    private GameObject levelMessage;
+
+    private GameObject count;
 
     private float timer = 5f;
 
@@ -30,6 +37,8 @@ public class Spawn : MonoBehaviour
     public class Level {
         public int id;
         public int common;
+
+        public bool completed;
         public int uncommon;
         public int rare;
     }
@@ -40,21 +49,69 @@ public class Spawn : MonoBehaviour
 
 
     public Levels myLevels = new Levels();
+
+    private bool starting = false;
+
+    private float messageTimer = 0;
+
+    public Levels originalLevels = new Levels();
     void Start()
     {
         myLevels = JsonUtility.FromJson<Levels>(textJson.text);
 
+        originalLevels = JsonUtility.FromJson<Levels>(textJson.text);
+
+        currentLevelId = PlayerPrefs.GetInt("level", 1);
+
+        if (currentLevelId <= 0)
+        {
+            PlayerPrefs.SetInt("level", 1);
+
+            currentLevelId = 1;
+        }
+
+        Debug.Log(currentLevelId);
+
         currentLevel = myLevels.levels.Find(item => item.id == currentLevelId);
+
+        Debug.Log(currentLevel);
 
         initialPosition = new Vector3(transform.position.x , 1f, transform.position.z);
 
         done = GameObject.FindGameObjectWithTag("done");
 
+        count = GameObject.FindGameObjectWithTag("count");
+
+        levelMessage = GameObject.FindGameObjectWithTag("levelid");
+
+        levelMessage.GetComponent<TMPro.TextMeshProUGUI>().text = "Level "+currentLevelId;
+
+        starting = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        if (starting)
+        {
+            if (messageTimer > 3f)
+            {
+                starting = false;
+
+                levelMessage.SetActive(false);
+
+                return;
+            }
+
+            messageTimer += Time.deltaTime;
+
+            count.GetComponent<TMPro.TextMeshProUGUI>().text = ((int)(3f-messageTimer)).ToString();
+
+            return;
+        }
+
+
         if (timer < interval)
         {
               timer += Time.deltaTime;
@@ -63,6 +120,7 @@ public class Spawn : MonoBehaviour
             timer = 0;
 
             float random = Random.Range(-5f,5f);
+
 
             Vector3 position = new Vector3(transform.position.x + random , 1f, transform.position.z);
 
@@ -100,6 +158,14 @@ public class Spawn : MonoBehaviour
             if (enemies.Length == 0 && !spawning)
             {
                 Time.timeScale = 0;
+
+                originalLevels.levels[currentLevelId].completed = true;
+
+                string newLevels = JsonUtility.ToJson(originalLevels);
+
+                PlayerPrefs.SetInt("level", currentLevelId++);
+
+                File.WriteAllText(AssetDatabase.GetAssetPath(textJson), newLevels);
 
                 done.SetActive(true);
             }

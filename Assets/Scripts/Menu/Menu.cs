@@ -22,10 +22,9 @@ public class Menu : MonoBehaviour
 
         Global.moving = false;
 
-        Spawn.
-
         SceneManager.LoadScene("Gameplay");
 
+        
 
     }
 }

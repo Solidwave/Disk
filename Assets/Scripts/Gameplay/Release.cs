@@ -16,13 +16,17 @@ public class Release : MonoBehaviour
     {
         health = GameObject.FindGameObjectWithTag("health");
 
+        done = GameObject.FindGameObjectWithTag("done");
+
+        done.SetActive(false);
+
+        Debug.Log(done.activeSelf);
+
         gameOver = GameObject.FindGameObjectWithTag("gameover");
 
         gameOver.SetActive(false);
 
-        done = GameObject.FindGameObjectWithTag("done");
-
-        done.SetActive(false);
+        
     }
 
     // Update is called once per frame
