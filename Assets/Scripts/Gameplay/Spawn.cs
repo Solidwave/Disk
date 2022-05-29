@@ -74,8 +74,6 @@ public class Spawn : MonoBehaviour
 
         currentLevel = myLevels.levels.Find(item => item.id == currentLevelId);
 
-        Debug.Log(currentLevel);
-
         initialPosition = new Vector3(transform.position.x , 1f, transform.position.z);
 
         done = GameObject.FindGameObjectWithTag("done");
@@ -163,7 +161,9 @@ public class Spawn : MonoBehaviour
 
                 string newLevels = JsonUtility.ToJson(originalLevels);
 
-                PlayerPrefs.SetInt("level", currentLevelId++);
+                currentLevelId++;
+
+                PlayerPrefs.SetInt("level", currentLevelId);
 
                 File.WriteAllText(AssetDatabase.GetAssetPath(textJson), newLevels);
 

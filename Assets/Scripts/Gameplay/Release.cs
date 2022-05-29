@@ -20,8 +20,6 @@ public class Release : MonoBehaviour
 
         done.SetActive(false);
 
-        Debug.Log(done.activeSelf);
-
         gameOver = GameObject.FindGameObjectWithTag("gameover");
 
         gameOver.SetActive(false);
@@ -43,8 +41,6 @@ public class Release : MonoBehaviour
             Destroy(other.gameObject);
 
             Global.playerHealth--;
-
-            Debug.Log(Global.playerHealth);
 
             if (Global.playerHealth == 0)
             {

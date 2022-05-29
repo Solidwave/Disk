@@ -45,4 +45,17 @@ public class Controls : MonoBehaviour
 
         Time.timeScale = 1;
     }
+
+    public void pause () {
+        if (Global.pause)
+        {
+            Global.pause = false;
+
+            Time.timeScale = 1;
+        } else {
+            Global.pause = true;
+
+            Time.timeScale = 0;
+        }
+    }
 }

@@ -17,8 +17,6 @@ public class Wall : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collision) {
-        Debug.Log(collision.gameObject.name);
-
         if (collision.gameObject.tag == "disk")
         {
             Vector3 velocity = collision.gameObject.GetComponent<Rigidbody>().velocity;

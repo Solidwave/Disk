@@ -23,9 +23,6 @@ public class Sling : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("start");
-
-
         anchor = GameObject.FindGameObjectWithTag("anchor");
 
         bound = GameObject.FindGameObjectWithTag("bound");

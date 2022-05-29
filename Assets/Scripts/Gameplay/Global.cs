@@ -11,6 +11,7 @@ public class Global : MonoBehaviour
 
    public static int playerHealth = 5;
 
+   public static bool pause = false;
    public static int currentLevel = PlayerPrefs.GetInt("level", 1);
 
    public static string gameMode ="levels";
