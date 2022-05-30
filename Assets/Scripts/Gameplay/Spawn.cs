@@ -11,15 +11,17 @@ public class Spawn : MonoBehaviour
 
     public TextAsset textJson;
 
+    private string path;
+
     public GameObject commonEnemy;
     public GameObject uncommonEnemy;
     public GameObject rareEnemy;
 
-    GameObject done;
-
     public float interval = 2f;
 
     public Vector3 initialPosition;
+
+    public GameObject done;
 
     private int currentLevelId;
 
@@ -70,13 +72,13 @@ public class Spawn : MonoBehaviour
             currentLevelId = 1;
         }
 
-        Debug.Log(currentLevelId);
+        path = Application.dataPath;
+        
+        Debug.Log(path);
 
         currentLevel = myLevels.levels.Find(item => item.id == currentLevelId);
 
         initialPosition = new Vector3(transform.position.x , 1f, transform.position.z);
-
-        done = GameObject.FindGameObjectWithTag("done");
 
         count = GameObject.FindGameObjectWithTag("count");
 
@@ -163,10 +165,15 @@ public class Spawn : MonoBehaviour
 
                 currentLevelId++;
 
+                if (currentLevelId == 6)
+                {
+                    currentLevelId = 1;
+                }
+
                 PlayerPrefs.SetInt("level", currentLevelId);
 
-                File.WriteAllText(AssetDatabase.GetAssetPath(textJson), newLevels);
-
+                File.WriteAllText(Application.dataPath + "/Resources/levels.json", newLevels);
+                
                 done.SetActive(true);
             }
 

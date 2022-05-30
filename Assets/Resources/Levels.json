@@ -1,1 +1,39 @@
-{"levels":[{"id":1,"common":3,"completed":true,"uncommon":0,"rare":0},{"id":2,"common":3,"completed":true,"uncommon":0,"rare":0},{"id":3,"common":3,"completed":false,"uncommon":0,"rare":0},{"id":4,"common":10,"completed":false,"uncommon":5,"rare":2},{"id":5,"common":10,"completed":true,"uncommon":5,"rare":2}]}
+{
+    "levels": [
+        {
+            "id": 1,
+            "common": 3,
+            "completed": false,
+            "uncommon": 0,
+            "rare": 0
+        },
+        {
+            "id": 2,
+            "common": 3,
+            "completed": false,
+            "uncommon": 0,
+            "rare": 0
+        },
+        {
+            "id": 3,
+            "common": 3,
+            "completed": false,
+            "uncommon": 0,
+            "rare": 0
+        },
+        {
+            "id": 4,
+            "common": 10,
+            "completed": false,
+            "uncommon": 5,
+            "rare": 2
+        },
+        {
+            "id": 5,
+            "common": 10,
+            "completed": false,
+            "uncommon": 5,
+            "rare": 2
+        }
+    ]
+}

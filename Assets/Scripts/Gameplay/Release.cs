@@ -10,15 +10,10 @@ public class Release : MonoBehaviour
     
     GameObject gameOver;
 
-    GameObject done;
     // Start is called before the first frame update
     void Start()
     {
         health = GameObject.FindGameObjectWithTag("health");
-
-        done = GameObject.FindGameObjectWithTag("done");
-
-        done.SetActive(false);
 
         gameOver = GameObject.FindGameObjectWithTag("gameover");
 

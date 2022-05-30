@@ -17,6 +17,7 @@ TagManager:
   - to_destroy
   - count
   - levelid
+  - NextLevel
   layers:
   - Default
   - TransparentFX
